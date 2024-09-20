@@ -1,3 +1,5 @@
+
+
 <?php
 
 use App\Models\Form;
@@ -10,6 +12,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\analyticsController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -34,9 +37,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/detail/answer', JawabanController::class);
     Route::get('/detail/template/{template:slug}', [HomeController::class, 'form']);
     Route::get('/dashboard/menutemplate/form/questionCreate/{form}', [QuestionController::class, 'makeQuetion']);
+    Route::get('/dashboard/analytics', [analyticsController::class, 'index']);
     
      
 });
 
 require __DIR__.'/auth.php';
-
